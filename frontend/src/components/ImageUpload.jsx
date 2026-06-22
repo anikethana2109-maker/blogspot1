@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import api from '../api/api';
+import api, { getImageUrl } from '../api/api';
 
 export default function ImageUpload({ onUpload, currentImage }) {
   const [preview, setPreview] = useState(currentImage || null);
@@ -49,8 +49,7 @@ export default function ImageUpload({ onUpload, currentImage }) {
   };
 
   const getImageSrc = (url) => {
-    if (!url) return '';
-    return url.startsWith('/') ? `http://localhost:3001${url}` : url;
+    return getImageUrl(url);
   };
 
   return (

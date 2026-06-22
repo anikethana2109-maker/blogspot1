@@ -24,24 +24,30 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve uploaded images as static files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/_/backend/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // --------------- Routes ---------------
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/posts', postRoutes);
-app.use('/api', commentRoutes);        // Handles /api/posts/:postId/comments AND /api/comments/:id
-app.use('/api/admin', adminRoutes);
-app.use('/api/uploads', uploadRoutes);
+const apiRouter = express.Router();
+apiRouter.use('/auth', authRoutes);
+apiRouter.use('/users', userRoutes);
+apiRouter.use('/posts', postRoutes);
+apiRouter.use('/', commentRoutes);        // Handles /api/posts/:postId/comments AND /api/comments/:id
+apiRouter.use('/admin', adminRoutes);
+apiRouter.use('/uploads', uploadRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
+apiRouter.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // 404 handler for unmatched API routes
-app.use('/api/*', (req, res) => {
+apiRouter.use('*', (req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
+
+// Mount the API router
+app.use('/api', apiRouter);
+app.use('/_/backend/api', apiRouter);
 
 // Centralized error handler
 app.use(errorHandler);

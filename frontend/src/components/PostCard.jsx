@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../api/api';
 
 export default function PostCard({ post }) {
   const getInitial = (name) => name ? name.charAt(0).toUpperCase() : '?';
@@ -20,7 +21,7 @@ export default function PostCard({ post }) {
     <Link to={`/post/${post.id}`} className="glass-card post-card" id={`post-card-${post.id}`}>
       {post.coverImage && (
         <img
-          src={post.coverImage.startsWith('/') ? `http://localhost:3001${post.coverImage}` : post.coverImage}
+          src={getImageUrl(post.coverImage)}
           alt={post.title}
           className="post-card-cover"
         />

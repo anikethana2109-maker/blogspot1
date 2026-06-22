@@ -173,3 +173,15 @@ Since Vercel runs ephemeral serverless instances, hosting the Express backend wi
 5. **Build and Start Commands**:
    - Build: `npm install && npx prisma migrate deploy`
    - Start: `npm start` (make sure a `start` command in `package.json` points to `node src/index.js`).
+
+### 3. Deploying Full-Stack to Vercel (Monorepo with experimentalServices)
+This workspace is configured with a root `vercel.json` containing Vercel's new `experimentalServices` setup, enabling deployment of both the frontend React client and the backend Express server under the same project/domain:
+* **Frontend Service** maps to `/`
+* **Backend Service** maps to `/_/backend`
+
+To configure:
+1. Connect your repository in Vercel.
+2. Vercel will automatically read the root `vercel.json` and provision two services.
+3. Switch your database in `backend/prisma/schema.prisma` to `postgresql` (as serverless functions do not persist SQLite local files).
+4. Add environment variables to the project (e.g. `DATABASE_URL`, `JWT_SECRET`, etc.).
+

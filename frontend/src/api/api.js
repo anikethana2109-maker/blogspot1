@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 
+  (import.meta.env.DEV ? 'http://localhost:3001/api' : '/_/backend/api');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -33,5 +34,14 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Helper to format image URLs based on environment
+export const getImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  
+  const base = import.meta.env.DEV ? 'http://localhost:3001' : '/_/backend';
+  return `${base}${url}`;
+};
 
 export default api;

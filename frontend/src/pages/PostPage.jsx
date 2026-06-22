@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import api from '../api/api';
+import api, { getImageUrl } from '../api/api';
 import CommentSection from '../components/CommentSection';
 
 export default function PostPage() {
@@ -153,7 +153,7 @@ export default function PostPage() {
         {/* Cover Image */}
         {post.coverImage && (
           <img
-            src={post.coverImage.startsWith('/') ? `http://localhost:3001${post.coverImage}` : post.coverImage}
+            src={getImageUrl(post.coverImage)}
             alt={post.title}
             className="post-cover-lg"
           />
