@@ -53,10 +53,14 @@ app.use('/_/backend/api', apiRouter);
 app.use(errorHandler);
 
 // --------------- Start Server ---------------
-app.listen(PORT, () => {
-  console.log('');
-  console.log(`🚀 Blog API running on http://localhost:${PORT}`);
-  console.log(`📖 Health check:   http://localhost:${PORT}/api/health`);
-  console.log(`📁 Uploads served: http://localhost:${PORT}/uploads/`);
-  console.log('');
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log('');
+    console.log(`🚀 Blog API running on http://localhost:${PORT}`);
+    console.log(`📖 Health check:   http://localhost:${PORT}/api/health`);
+    console.log(`📁 Uploads served: http://localhost:${PORT}/uploads/`);
+    console.log('');
+  });
+}
+
+module.exports = app;
