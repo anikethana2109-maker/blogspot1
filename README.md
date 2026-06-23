@@ -1,4 +1,4 @@
-# Luminex Blog — Share Your Ideas ✨
+# Luminex Blog — Share Your Ideas 🌟
 
 Luminex Blog is a modern, full-stack blogging platform. It is split into an **Express.js API Backend** powered by **Prisma & SQLite**, and a **React 19 + Vite 6 Frontend** featuring a glassmorphic dark theme, rich transitions, and a fully responsive interface.
 
