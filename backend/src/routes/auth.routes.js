@@ -7,6 +7,7 @@ const { authenticate } = require('../middleware/auth');
 
 const router = express.Router();
 const prisma = new PrismaClient();
+const JWT_SECRET = process.env.JWT_SECRET || 'blog-super-secret-key-change-in-production-2024';
 
 // ─── POST /api/auth/register ────────────────────────────────────────────────
 router.post(
@@ -35,7 +36,7 @@ router.post(
         data: { name, email, password: hashedPassword }
       });
 
-      const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
 
       res.status(201).json({
         token,
@@ -74,7 +75,7 @@ router.post(
         return res.status(401).json({ error: 'Invalid email or password' });
       }
 
-      const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
 
       res.json({
         token,

@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
+const JWT_SECRET = process.env.JWT_SECRET || 'blog-super-secret-key-change-in-production-2024';
 
 /**
  * Middleware: Verify JWT token and attach user to request.
@@ -15,7 +16,7 @@ const authenticate = async (req, res, next) => {
     }
 
     const token = authHeader.split(' ')[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
 
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
