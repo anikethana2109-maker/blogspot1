@@ -5,41 +5,41 @@
 
 /* ─── CSS Custom Properties ──────────────────────────────────────────────── */
 :root {
-  /* Background */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1a1f35;
-  --bg-card: rgba(17, 24, 39, 0.7);
-  --bg-card-hover: rgba(26, 31, 53, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-  --bg-glass-hover: rgba(255, 255, 255, 0.08);
-  --bg-input: rgba(255, 255, 255, 0.06);
+  /* Backgrounds */
+  --bg-primary: #FBF5DD;
+  --bg-secondary: #F4EFCF;
+  --bg-tertiary: #E7E1B1;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(48, 109, 41, 0.04);
+  --bg-glass-hover: rgba(48, 109, 41, 0.08);
+  --bg-input: rgba(255, 255, 255, 0.8);
 
-  /* Text */
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-tertiary: #64748b;
-  --text-muted: #475569;
+  /* Text colors */
+  --text-primary: #0D530E;
+  --text-secondary: #1E371C;
+  --text-tertiary: #3E5B3C;
+  --text-muted: #6E886C;
 
-  /* Accent gradient: purple → cyan */
-  --accent-start: #8b5cf6;
-  --accent-mid: #6366f1;
-  --accent-end: #06b6d4;
+  /* Accent gradient: medium forest green → deep forest green */
+  --accent-start: #306D29;
+  --accent-mid: #1D5F19;
+  --accent-end: #0D530E;
   --gradient-accent: linear-gradient(135deg, var(--accent-start), var(--accent-mid), var(--accent-end));
-  --gradient-accent-hover: linear-gradient(135deg, #9b6ff7, #7577f2, #22d3ee);
-  --gradient-subtle: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(6, 182, 212, 0.12));
+  --gradient-accent-hover: linear-gradient(135deg, #3A7F33, #155512);
+  --gradient-subtle: linear-gradient(135deg, rgba(48, 109, 41, 0.08), rgba(13, 83, 14, 0.08));
 
   /* Borders */
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(255, 255, 255, 0.15);
-  --border-accent: rgba(139, 92, 246, 0.3);
+  --border-color: rgba(48, 109, 41, 0.12);
+  --border-color-hover: rgba(48, 109, 41, 0.25);
+  --border-accent: rgba(48, 109, 41, 0.35);
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.15);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-sm: 0 1px 3px rgba(13, 83, 14, 0.05);
+  --shadow-md: 0 4px 16px rgba(13, 83, 14, 0.08);
+  --shadow-lg: 0 8px 32px rgba(13, 83, 14, 0.12);
+  --shadow-glow: 0 0 25px rgba(48, 109, 41, 0.12);
+  --shadow-card: 0 4px 20px rgba(13, 83, 14, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -58,7 +58,9 @@
   --radius-full: 9999px;
 
   /* Typography */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-serif: 'Lora', Georgia, serif;
+  --font-family: var(--font-family-serif);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -110,9 +112,9 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(139, 92, 246, 0.08), transparent),
-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(6, 182, 212, 0.05), transparent),
-    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(99, 102, 241, 0.06), transparent);
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(48, 109, 41, 0.06), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(231, 225, 177, 0.2), transparent),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(13, 83, 14, 0.05), transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -165,6 +167,7 @@ ul, ol {
 
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-serif);
   font-weight: 700;
   line-height: 1.25;
   color: var(--text-primary);
@@ -224,7 +227,7 @@ p {
   justify-content: center;
   gap: var(--space-sm);
   padding: 0.625rem 1.5rem;
-  font-family: var(--font-family);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
   font-weight: 600;
   border-radius: var(--radius-md);
@@ -245,12 +248,12 @@ p {
 .btn-primary {
   background: var(--gradient-accent);
   color: white;
-  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 2px 12px rgba(48, 109, 41, 0.25);
 }
 
 .btn-primary:hover:not(:disabled) {
   background: var(--gradient-accent-hover);
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 4px 20px rgba(48, 109, 41, 0.35);
   transform: translateY(-1px);
 }
 
@@ -317,7 +320,7 @@ p {
 .form-select {
   width: 100%;
   padding: 0.75rem 1rem;
-  font-family: var(--font-family);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
   color: var(--text-primary);
   background: var(--bg-input);
@@ -331,7 +334,7 @@ p {
 .form-textarea:focus,
 .form-select:focus {
   border-color: var(--accent-start);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 0 0 3px rgba(48, 109, 41, 0.15);
   background: var(--bg-glass-hover);
 }
 
@@ -356,7 +359,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 14, 26, 0.8);
+  background: rgba(251, 245, 221, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
@@ -373,13 +376,14 @@ p {
 }
 
 .navbar-logo {
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-xl);
   font-weight: 800;
   background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   text-decoration: none;
 }
 
@@ -390,19 +394,21 @@ p {
 }
 
 .navbar-link {
-  padding: 0.5rem 0.875rem;
+  font-family: var(--font-family-sans);
+  padding: 0.5rem 1rem;
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   text-decoration: none;
+  letter-spacing: -0.01em;
 }
 
 .navbar-link:hover,
 .navbar-link.active {
   color: var(--text-primary);
-  background: var(--bg-glass);
+  background: var(--bg-glass-hover);
 }
 
 .navbar-avatar {
@@ -421,7 +427,7 @@ p {
 }
 
 .navbar-avatar:hover {
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 0 3px rgba(48, 109, 41, 0.25);
 }
 
 .navbar-user-menu {
@@ -457,7 +463,7 @@ p {
   border-radius: var(--radius-sm);
   text-align: left;
   cursor: pointer;
-  font-family: var(--font-family);
+  font-family: var(--font-family-sans);
   transition: all var(--transition-fast);
   text-decoration: none;
 }
@@ -545,7 +551,7 @@ p {
 .search-input {
   width: 100%;
   padding: 0.875rem 1.25rem 0.875rem 3rem;
-  font-family: var(--font-family);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
   color: var(--text-primary);
   background: var(--bg-card);
@@ -558,7 +564,7 @@ p {
 
 .search-input:focus {
   border-color: var(--accent-start);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1), var(--shadow-glow);
+  box-shadow: 0 0 0 3px rgba(48, 109, 41, 0.1), var(--shadow-glow);
 }
 
 .search-input::placeholder {
@@ -935,7 +941,7 @@ p {
   font-weight: 800;
   color: white;
   flex-shrink: 0;
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 30px rgba(48, 109, 41, 0.25);
 }
 
 .profile-info h1 {
@@ -1125,7 +1131,7 @@ p {
 
 .upload-area.drag-over {
   border-color: var(--accent-start);
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(48, 109, 41, 0.1);
 }
 
 .upload-icon {
@@ -1184,15 +1190,15 @@ p {
 }
 
 .badge-admin {
-  background: rgba(139, 92, 246, 0.15);
+  background: rgba(48, 109, 41, 0.15);
   color: var(--accent-start);
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  border: 1px solid rgba(48, 109, 41, 0.25);
 }
 
 .badge-user {
-  background: rgba(6, 182, 212, 0.15);
+  background: rgba(13, 83, 14, 0.1);
   color: var(--accent-end);
-  border: 1px solid rgba(6, 182, 212, 0.25);
+  border: 1px solid rgba(13, 83, 14, 0.18);
 }
 
 /* ─── Toast / Alert ──────────────────────────────────────────────────────── */
@@ -1334,7 +1340,7 @@ p {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-family: var(--font-family);
+  font-family: var(--font-family-sans);
   transition: all var(--transition-fast);
 }
 
