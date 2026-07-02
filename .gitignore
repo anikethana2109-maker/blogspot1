@@ -46,3 +46,6 @@ backend/prisma/dev.db-journal
 # Uploaded files but keep the directory
 backend/uploads/*
 !backend/uploads/.gitkeep
+
+.vercel
+.env*
